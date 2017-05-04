@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include header.ejs %>
+</head>
+<body>
+<div class="container">
+    <% include navigation.ejs %>
+</div>
+<div class="container">
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <table class="table" id="tasks-table">
+                <thead class="thead-inverse">
+                <tr>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 25%">Title</th>
+                    <th class="hidden-md-down" style="width: 50%">Description</th>
+                    <th class="hidden-md-down" style="width: 10%">Date</th>
+                    <th style="width: 10%">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for(var i = 0; i < tasks.length; i++) { %>
+                <tr data-value="<%= i %>">
+                    <td><%= i %></td>
+                    <td><%= tasks[i].title %></td>
+                    <td class="hidden-md-down"><%= tasks[i].description %></td>
+                    <td class="hidden-md-down"><%= tasks[i].date.toLocaleDateString() %></td>
+                    <td>
+                        <% if (tasks[i].made) { %>
+                        <a href="/update/<%= tasks[i].id %>" class="btn btn-outline-success btn-sm disabled"
+                           data-toggle="tooltip" title="Make task made">
+                            <i class="fa fa-check-circle-o"></i>
+                        </a>
+                        <% } else { %>
+                        <a href="/update/<%= tasks[i].id %>" class="btn btn-outline-success btn-sm"
+                           data-toggle="tooltip" title="Make task made">
+                            <i class="fa fa-check-circle-o"></i>
+                        </a>
+                        <% } %>
+                        <a href="/delete/<%= tasks[i].id %>" class="btn btn-outline-danger btn-sm"
+                           data-toggle="tooltip" title="Delete task">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <% if (tasks.length < 1) { %>
+    <p align="center" id="task-info">Not Tasks Found</p>
+    <% } %>
+    <% include add-task.ejs %>
+</div>
+<footer>
+    <% include footer.ejs %>
+</footer>
+</body>
+</html>

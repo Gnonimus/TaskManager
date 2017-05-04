@@ -1,0 +1,34 @@
+<!-- Modal Add Task -->
+<div class="modal fade" id="modalTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--form id="add-task" action="/add" method="post" onsubmit="return validateTask();"-->
+        <form id="add-task" action="/add">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Add New Task
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" id="div-task-title">
+                        <label class="form-control-label" for="task-title">Title</label>
+                        <input type="text" class="form-control" id="task-title"
+                               name="task-title"
+                               placeholder="Type task title">
+                    </div>
+                    <div class="form-group" id="div-task-description">
+                        <label class="form-control-label" for="task-description">Brief description</label>
+                        <textarea type="" class="form-control" rows="3" id="task-description"
+                                  name="task-description" placeholder="Write a brief description"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-outline-danger float-right" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-primary float-right">Add Task</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
